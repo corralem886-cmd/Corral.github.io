@@ -1,71 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orbiting Dot - Math Animation</title>
+  <!-- 1. Load p5.js CDN BEFORE sketch.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+</head>
+<body>
+  <h1>Orbiting Dot: Circular Motion with Trigonometry</h1>
+  <p><strong>Controls:</strong> Click canvas or press SPACE to pause/resume. Use UP/DOWN arrows to adjust angular speed.</p>
 
-Gimlee.txt
-100%
-let orbitAngle = 0; // Current angle in radians around the center
-let angularSpeed = 0.03; // Radians added to orbitAngle each active frame
-let orbitRadius = 110; // Distance in pixels from center to orbiting dot
-let isPaused = false; // Tracks whether the animation is paused
+  <!-- p5.js canvas will automatically attach here -->
+  <main></main>
 
-function setup() {
-createCanvas(600, 420);
-}
+  <p>
+    <strong>Explanation Video:</strong>
+    <a href="YOUR_VIDEO_LINK_HERE" target="_blank">Watch Video Explanation</a>
+  </p>
 
-function draw() {
-background(24, 28, 36);
+  <h3>Sources &amp; Tools Used</h3>
+  <ul>
+    <li>p5.js library (loaded via cdnjs)</li>
+    <li>AI assistance (Gemini) used for formatting HTML structure and reviewing trigonometric formulas</li>
+  </ul>
 
-let centerX = width / 2;
-let centerY = height / 2 + 15;
-
-// Draw the circular orbital path and center anchor point
-noFill();
-stroke(70, 85, 110);
-strokeWeight(2);
-circle(centerX, centerY, orbitRadius * 2);
-
-fill(255, 190, 60);
-noStroke();
-circle(centerX, centerY, 12);
-
-// Calculate orbiting dot position using cosine (x) and sine (y)
-let dotX = centerX + orbitRadius * cos(orbitAngle);
-let dotY = centerY + orbitRadius * sin(orbitAngle);
-
-// Draw radius line and orbiting dot
-stroke(110, 180, 255, 140);
-strokeWeight(2);
-line(centerX, centerY, dotX, dotY);
-
-fill(80, 220, 170);
-noStroke();
-circle(dotX, dotY, 22);
-
-// Advance angle over time when not paused
-if (!isPaused) {
-orbitAngle += angularSpeed;
-}
-
-// Display title, live math values, and control instructions on canvas
-fill(240);
-noStroke();
-textSize(14);
-text("Orbiting Dot (x = cx + r*cos(θ), y = cy + r*sin(θ))", 16, 26);
-text("Controls: Click or SPACE = Pause/Resume | UP/DOWN = Speed", 16, 48);
-text("Status: " + (isPaused ? "Paused" : "Running") + " | Speed: " + angularSpeed.toFixed(2) + " rad/frame", 16, 70);
-}
-
-function mousePressed() {
-if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-isPaused = !isPaused;
-}
-}
-
-function keyPressed() {
-if (key === " ") {
-isPaused = !isPaused;
-} else if (keyCode === UP_ARROW) {
-angularSpeed = min(0.20, angularSpeed + 0.01);
-} else if (keyCode === DOWN_ARROW) {
-angularSpeed = max(0.00, angularSpeed - 0.01);
-}
-}
-Displaying Gimlee.txt.
+  <!-- 2. Load your sketch AFTER p5.js -->
+  <script src="sketch.js"></script>
+</body>
+</html>
